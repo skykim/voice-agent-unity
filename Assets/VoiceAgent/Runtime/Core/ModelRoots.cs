@@ -20,8 +20,8 @@ namespace VoiceAgent
         public static string Stt => Package(SttPackage);
         public static string Tts => Package(TtsPackage);
         public static string Gemma => Package(GemmaPackage);
-        /// <summary>The trained jevlike head (VoiceAgent/Train Command Head).</summary>
-        public static string IntentHead => Path.Combine(Application.streamingAssetsPath, "Intent", "jevlike_head.json");
+        /// <summary>The trained jevlike head graph (VoiceAgent/Train Command Head).</summary>
+        public static string IntentHead => Path.Combine(Application.streamingAssetsPath, "Intent", "jevlike_head.sentis");
 
         public static Gemma3Model LoadGemma(string systemPrompt)
         {

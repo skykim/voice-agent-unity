@@ -16,7 +16,7 @@ It understands **English and Korean** and answers in the language you used.
 |---|---|---|---|
 | Voice activity | Silero VAD (FP32) | CPU | [`com.sky.sentis.silero-vad`](https://huggingface.co/Sky-Kim/com.sky.sentis.silero-vad) |
 | Speech to text | SenseVoice-Small (FP32), auto language | GPU | [`com.sky.sentis.sensevoice`](https://huggingface.co/Sky-Kim/com.sky.sentis.sensevoice) |
-| Intent | gemma-3-270m-it (FP32), frozen, plus a jevlike attention head | GPU + C# | [`com.sky.sentis.gemma3-270m-it`](https://huggingface.co/Sky-Kim/com.sky.sentis.gemma3-270m-it) + `Editor/Training/` |
+| Intent | gemma-3-270m-it (FP32), frozen, plus a jevlike attention head | GPU + CPU | [`com.sky.sentis.gemma3-270m-it`](https://huggingface.co/Sky-Kim/com.sky.sentis.gemma3-270m-it) + `Editor/Training/` |
 | Chat fallback | gemma-3-270m-it greedy generation (same graph, KV cache) | GPU | same package |
 | Text to speech | Supertonic 3 (FP32), voice F2 | GPU | [`com.sky.sentis.supertonic`](https://huggingface.co/Sky-Kim/com.sky.sentis.supertonic) |
 
@@ -36,7 +36,7 @@ Typical latency from the end of speech to the first sound of the reply on an App
 
 **Run the demo.** Clone the repository and open it in Unity. The Package Manager fetches the FP32 models from Hugging Face (about 3 GB in total, the first time only). Then open `Assets/Scenes/VoiceAgentDemo.unity`, press Play, and tap the orb or type.
 
-The trained intent head (`Assets/StreamingAssets/Intent/jevlike_head.json`) is included, so no training is needed. To retrain it, see [Training the intent head](#training-the-intent-head).
+The trained intent head (`Assets/StreamingAssets/Intent/jevlike_head.sentis`) is included, so no training is needed. To retrain it, see [Training the intent head](#training-the-intent-head).
 
 The project runs in the Editor: `ModelRoots` reads the models straight from each package's `Models~` folder, which players don't have.
 
@@ -75,8 +75,8 @@ An [earlier version](https://github.com/skykim/mini-agent-unity) used [FunctionG
 | | FunctionGemma (LoRA) | jevlike (frozen Gemma + head) |
 |---|---|---|
 | Trained parameters | ≈ 3.8 M | ≈ 0.25 M |
-| Training time | ≈ 2.5 h on Apple MPS | ≈ 1.5 min in the Unity Editor |
-| Inference per command | 1.5–1.8 s (long prompt, then generate the call) | ≈ 20 ms (one short prefill + head) |
+| Training time | ≈ 2.5 h on Apple MPS | ≈ 1 min in the Unity Editor |
+| Inference per command | ≈ 500 ms (long prompt, then generate the call) | ≈ 20 ms (one short prefill + head) |
 | Adding a command | Regenerate data, retrain, merge, export, convert | Edit `Commands.json` and the example phrases, retrain the head |
 
 jevlike leaves Gemma untouched, so one graph does intent, chat and search embeddings. The fine-tuned model changed every layer and mostly refused small talk. What jevlike gives up is argument extraction and several calls in one sentence: it picks one command, and Nova fills in the few arguments it needs (city, color, Wikidata entity) with rules.
@@ -87,11 +87,11 @@ jevlike leaves Gemma untouched, so one graph does intent, chat and search embedd
 
 Only the jevlike head is trained (about 250k parameters). Gemma stays frozen: it encodes each training sentence once, and the head trains on those cached states. Everything runs in the Unity Editor.
 
-**VoiceAgent ▸ Train Command Head…** opens the trainer window: pick the settings, press **Train** (about a minute and a half), and read the validation accuracy, the on/off check and the benchmark in the log.
+**VoiceAgent ▸ Train Command Head…** opens the trainer window: set the Gemma3 layer (12 by default), the head size, epochs and optimizer if you like, press **Train** (about a minute), and read the validation accuracy, the on/off check and the benchmark in the log.
 
-The head is written to `Assets/StreamingAssets/Intent/jevlike_head.json` and the report to `Logs/train-command-head.json`.
+The head is written to `Assets/StreamingAssets/Intent/jevlike_head.sentis` as a Sentis graph (token states to command probabilities, run on the CPU, with the Gemma3 layer, token limit and command order stored in the graph) and the report to `Logs/train-command-head.json`.
 
-The trainer first holds some sentences out to measure the head and pick the epoch count, then trains the final head on every sentence (`FinalOnAllSentences`, on by default).
+The trainer first holds some sentences out to measure the head and pick the epoch count, then trains the final head on every sentence. It always trains on English and Korean and writes the runtime's head file.
 
 **Training data**
 
@@ -120,9 +120,9 @@ Assets/VoiceAgent/
   Runtime/Scenes/   one script per scene
   Resources/        Commands.json, Persona.json, Polarity.json, Icons/
   UI/               sprites the scenes use
-  Editor/Training/  the trainer window, the trainer and its data
+  Editor/Training/  the trainer window, the trainer, the head exporter and the training data
   Tests/            EditMode and PlayMode tests
-Assets/StreamingAssets/Intent/   jevlike_head.json (the trained head)
+Assets/StreamingAssets/Intent/   jevlike_head.sentis (the trained head)
 ```
 
 ## Privacy and network
@@ -136,7 +136,7 @@ Speech recognition, intent, generation and speech synthesis all run locally. Onl
 ## License
 
 - [Gemma 3](https://ai.google.dev/gemma), under the [Gemma Terms of Use](https://ai.google.dev/gemma/terms), through [`com.sky.sentis.gemma3-270m-it`](https://huggingface.co/Sky-Kim/com.sky.sentis.gemma3-270m-it).
-- [jevlike](https://github.com/vinnylarouge/jevlike) (Copyright (c) 2026 Minimal Labs), MIT. `JevlikeRanker` and `HeadTrainer` implement its option-attention head in C#.
+- [jevlike](https://github.com/vinnylarouge/jevlike) (Copyright (c) 2026 Minimal Labs), MIT. `HeadTrainer` implements its option-attention head and training in C#; `HeadExporter` writes it as a Sentis graph that `JevlikeRanker` runs.
 - The speech models also come through Sentis packages: Silero VAD, SenseVoice-Small (FunAudioLLM) and Supertonic 3 (Supertone). Each package states its model license.
 - Data: Open-Meteo, Wikidata and Wikipedia (CC BY-SA), and news RSS feeds.
 - Icons: [Material Icons](https://github.com/google/material-design-icons) by Google (Round style), under the [Apache License 2.0](Assets/VoiceAgent/Resources/Icons/LICENSE.txt), recolored to white (`Resources/Icons`).

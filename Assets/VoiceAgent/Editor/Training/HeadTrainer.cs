@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace VoiceAgent.Editor
@@ -148,6 +145,17 @@ namespace VoiceAgent.Editor
                 }
             });
             return probs;
+        }
+
+        /// <summary>
+        /// What scoring needs from the current parameters: the context LayerNorm weight and bias [width] and the key/value
+        /// weights with the option queries folded in [count × width].
+        /// </summary>
+        public (float[] Gamma, float[] Beta, float[] KeyFold, float[] ValueFold) Folded()
+        {
+            Fold();
+            return (m_P.AsSpan(m_ContextGamma, Width).ToArray(), m_P.AsSpan(m_ContextBeta, Width).ToArray(),
+                (float[])m_KeyFold.Clone(), (float[])m_ValueFold.Clone());
         }
 
         /// <summary>LayerNorm the option vectors, project them to queries and fold the queries into the key/value weights.</summary>
@@ -406,47 +414,5 @@ namespace VoiceAgent.Editor
                 Loss = 0;
             }
         }
-
-        /// <summary>Writes the heads in the format <see cref="JevlikeRanker"/> reads.</summary>
-        public static void WriteJson(string path, IReadOnlyList<HeadTrainer> heads, IReadOnlyList<string> intents, int layer, int maxTokens, float valAccuracy, float valEce)
-        {
-            var first = heads[0];
-            var sb = new StringBuilder(first.m_P.Length * heads.Count * 12 + first.m_Options.Length * 12);
-            sb.Append($"{{\"width\": {first.Width}, \"rank\": {first.Rank}, \"eps\": {Number(LayerNormEps)}, \"layer\": {layer}, \"max_tokens\": {maxTokens}, \"intents\": [");
-            for (var i = 0; i < intents.Count; i++) sb.Append(i == 0 ? "" : ", ").Append('"').Append(intents[i]).Append('"');
-            sb.Append("], \"options\": ");
-            AppendArray(sb, first.m_Options, 0, first.m_Options.Length);
-            sb.Append(", \"heads\": [");
-            for (var h = 0; h < heads.Count; h++)
-            {
-                var t = heads[h];
-                int w = t.Width, rw = t.Rank * t.Width;
-                sb.Append(h == 0 ? "{" : ", {");
-                sb.Append("\"context_norm_weight\": "); AppendArray(sb, t.m_P, t.m_ContextGamma, w);
-                sb.Append(", \"context_norm_bias\": "); AppendArray(sb, t.m_P, t.m_ContextBeta, w);
-                sb.Append(", \"option_norm_weight\": "); AppendArray(sb, t.m_P, t.m_OptionGamma, w);
-                sb.Append(", \"option_norm_bias\": "); AppendArray(sb, t.m_P, t.m_OptionBeta, w);
-                sb.Append(", \"query\": "); AppendArray(sb, t.m_P, t.m_Query, rw);
-                sb.Append(", \"key\": "); AppendArray(sb, t.m_P, t.m_Key, rw);
-                sb.Append(", \"value\": "); AppendArray(sb, t.m_P, t.m_Value, rw);
-                sb.Append('}');
-            }
-            sb.Append($"], \"val_accuracy\": {Number(valAccuracy)}, \"val_ece\": {Number(valEce)}}}");
-            Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(path))!);
-            File.WriteAllText(path, sb.ToString());
-        }
-
-        static void AppendArray(StringBuilder sb, float[] values, int offset, int count)
-        {
-            sb.Append('[');
-            for (var i = 0; i < count; i++)
-            {
-                if (i > 0) sb.Append(", ");
-                sb.Append(Number(values[offset + i]));
-            }
-            sb.Append(']');
-        }
-
-        static string Number(float value) => value.ToString("G9", CultureInfo.InvariantCulture);
     }
 }

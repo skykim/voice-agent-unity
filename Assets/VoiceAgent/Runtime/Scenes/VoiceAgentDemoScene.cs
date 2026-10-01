@@ -23,6 +23,7 @@ namespace VoiceAgent.Scenes
         AssistantController m_Controller;
         VoiceInput m_Voice;
         Gemma3Model m_Gemma;
+        JevlikeRanker m_Ranker;
         readonly Stopwatch m_SinceSpeechEnd = new();
         float m_SpeechStarted, m_SpeechSeconds;
         int m_Partials;
@@ -52,11 +53,10 @@ namespace VoiceAgent.Scenes
                 // Replies still show as text (AssistantController skips speech when TTS isn't loaded).
                 UnityEngine.Debug.LogException(e);
             }
-            JevlikeRanker ranker;
             try
             {
                 m_Gemma = ModelRoots.LoadGemma(persona.system_prompt);
-                ranker = new JevlikeRanker(m_Gemma, ModelRoots.IntentHead, catalog);
+                m_Ranker = new JevlikeRanker(m_Gemma, ModelRoots.IntentHead, catalog);
             }
             catch (System.Exception e)
             {
@@ -64,7 +64,7 @@ namespace VoiceAgent.Scenes
                 m_View.SetStatus($"Couldn't load Gemma3 or the intent head: {e.Message}");
                 return;
             }
-            ranker.Score("warmup");
+            m_Ranker.Score("warmup");
             m_View.SetStatus("Warming up Gemma3 generation…");
             await m_Gemma.GenerateAsync("hi", 2);
             if (!this) return;
@@ -72,7 +72,7 @@ namespace VoiceAgent.Scenes
             var info = new InfoAgent(new UnityWebClient(), m_Gemma);
             _ = info.WarmupAsync();
 
-            m_Controller = new AssistantController(catalog, persona, home, ranker, m_Gemma, m_View, m_Music, m_Speech, info, m_Timing);
+            m_Controller = new AssistantController(catalog, persona, home, m_Ranker, m_Gemma, m_View, m_Music, m_Speech, info, m_Timing);
             m_View.MicClicked += ToggleListen;
             m_Voice.SpeechStarted += () =>
             {
@@ -147,6 +147,7 @@ namespace VoiceAgent.Scenes
         void OnDestroy()
         {
             m_Voice?.Dispose();
+            m_Ranker?.Dispose();
             m_Gemma?.Dispose();
         }
     }

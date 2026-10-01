@@ -44,26 +44,33 @@ namespace VoiceAgent.Tests
             }
         }
 
-        [Test]
-        public void ExportedHead_ScoresLikeTheRuntimeRanker()
+        [TestCase(1)]
+        [TestCase(2)]
+        public void ExportedHead_ScoresLikeTheRuntimeRanker(int headCount)
         {
             var catalog = CommandCatalog.Load();
             var random = new Random(2);
-            var trainer = new HeadTrainer(Gemma3Model.Width, 8, RandomArray(random, catalog.Count * Gemma3Model.Width, 1f), random);
             var batch = Enumerable.Range(0, 16).Select(i => RandomExample(random, Gemma3Model.Width, 3 + i % 5, i % catalog.Count)).ToList();
-            for (var step = 0; step < 3; step++) trainer.Step(batch, (ulong)step);
+            var heads = Enumerable.Range(0, headCount).Select(_ =>
+            {
+                var trainer = new HeadTrainer(Gemma3Model.Width, 8, RandomArray(random, catalog.Count * Gemma3Model.Width, 1f), random);
+                for (var step = 0; step < 3; step++) trainer.Step(batch, (ulong)step);
+                return trainer;
+            }).ToList();
 
-            var path = Path.Combine(Path.GetTempPath(), "jevlike_head_trainer_test.json");
+            var path = Path.Combine(Path.GetTempPath(), "jevlike_head_trainer_test.sentis");
             try
             {
-                HeadTrainer.WriteJson(path, new[] { trainer }, catalog.Commands.Select(c => c.id).ToList(), 12, 48, 0.5f, 0.1f);
-                var ranker = new JevlikeRanker(null, path, catalog);
+                HeadExporter.Write(path, heads, catalog.Commands.Select(c => c.id).ToList(), 12, 48, 0.5f, 0.1f);
+                using var ranker = new JevlikeRanker(null, path, catalog);
                 Assert.AreEqual(12, ranker.Layer);
-                var expected = trainer.Predict(batch);
+                Assert.AreEqual(0.5f, ranker.ValidationAccuracy);
+                var predictions = heads.Select(h => h.Predict(batch)).ToList();
                 for (var i = 0; i < batch.Count; i++)
                 {
+                    var expected = Enumerable.Range(0, catalog.Count).Select(o => predictions.Average(p => p[i][o])).ToArray();
                     var actual = ranker.ScoreStates(batch[i].States, batch[i].Length);
-                    for (var o = 0; o < catalog.Count; o++) Assert.AreEqual(expected[i][o], actual[o], 1e-4f, $"example {i}, command {o}");
+                    for (var o = 0; o < catalog.Count; o++) Assert.AreEqual(expected[o], actual[o], 1e-4f, $"example {i}, command {o}");
                 }
             }
             finally
@@ -79,7 +86,7 @@ namespace VoiceAgent.Tests
             {
                 Epochs = 12, Layer = 6, Rank = 64, MaxTokens = 32, Heads = 3, RepeatExtra = 2, Seed = 11, BatchSize = 32,
                 LearningRate = 5e-3f, WeightDecay = 0f, Dropout = 0.25f, LabelSmoothing = 0.05f, ClipNorm = 2f,
-                Languages = "ko", Guard = false, HeadOut = "/tmp/head.json", Report = "/tmp/report.json", Dataset = "/tmp/data",
+                Languages = "ko", Guard = false, HeadOut = "/tmp/head.sentis", Report = "/tmp/report.json", Dataset = "/tmp/data",
             };
             var loaded = new CommandTrainer.Settings();
             UnityEngine.JsonUtility.FromJsonOverwrite(UnityEngine.JsonUtility.ToJson(edited), loaded);

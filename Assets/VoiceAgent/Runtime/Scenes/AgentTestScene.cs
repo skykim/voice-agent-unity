@@ -113,6 +113,10 @@ namespace VoiceAgent.Scenes
             m_Screen.AppendLog($"Q: {text}\nA: {answer}   / {tokens} tokens in {seconds:F2} s ({tokens / seconds:F1} tok/s, one token per frame)");
         }
 
-        void OnDestroy() => m_Gemma?.Dispose();
+        void OnDestroy()
+        {
+            m_Ranker?.Dispose();
+            m_Gemma?.Dispose();
+        }
     }
 }

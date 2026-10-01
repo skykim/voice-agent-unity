@@ -13,7 +13,7 @@ namespace VoiceAgent.Editor
 {
     /// <summary>
     /// Trains the command picker: Gemma3 token states for every training sentence (the FP32 encoder the runtime scores
-    /// with), then the jevlike head, checked with the on/off guard. Writes StreamingAssets/Intent/jevlike_head.json
+    /// with), then the jevlike head, checked with the on/off guard. Writes StreamingAssets/Intent/jevlike_head.sentis
     /// and a report in Logs/train-command-head.json.
     /// Settings are edited in <see cref="CommandTrainerWindow"/> (VoiceAgent/Train Command Head…).
     /// </summary>
@@ -196,7 +196,7 @@ namespace VoiceAgent.Editor
 
                 Phase("write outputs", () =>
                 {
-                    HeadTrainer.WriteJson(settings.HeadOut, written, intents, settings.Layer, settings.MaxTokens, valAccuracy, valEce);
+                    HeadExporter.Write(settings.HeadOut, written, intents, settings.Layer, settings.MaxTokens, valAccuracy, valEce);
                     return 0;
                 });
                 var samples = encoder.Examples(s_Samples.Select(s => (JevlikeRanker.Normalize(s), 0)).ToList());

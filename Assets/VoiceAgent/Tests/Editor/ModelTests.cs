@@ -50,7 +50,11 @@ namespace VoiceAgent.Tests
         }
 
         [OneTimeTearDown]
-        public void Unload() => s_Gemma?.Dispose();
+        public void Unload()
+        {
+            s_Ranker?.Dispose();
+            s_Gemma?.Dispose();
+        }
 
         [Test]
         public void Tokenizer_MatchesHuggingFace()
