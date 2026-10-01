@@ -1,0 +1,80 @@
+{
+  "commands": [
+    {
+      "id": "turn_on_light", "icon": "lightbulb", "color": "#F5B83D", "label": "Turn on the lights", "reply": "Lights are on.", "label_ko": "불 켜기", "reply_ko": "불을 켰어요.",
+      "options": ["turn on the light", "lights on", "switch on the lamp", "brighten the room", "불 켜줘"]
+    },
+    {
+      "id": "turn_off_light", "icon": "lightbulb_outline", "color": "#8A8F99", "label": "Turn off the lights", "reply": "Lights are off.", "label_ko": "불 끄기", "reply_ko": "불을 껐어요.",
+      "options": ["turn off the light", "lights off", "switch off the lamp", "make it dark", "불 꺼줘"]
+    },
+    {
+      "id": "set_light_color", "icon": "palette", "color": "#C86DD7", "label": "Change light color", "reply": "The light is {color} now.", "label_ko": "조명 색 바꾸기", "reply_ko": "조명을 {color}으로 바꿨어요.",
+      "options": ["change the light color", "make the lights red", "set the lamp to green", "switch the light to a rainbow color", "조명 색 바꿔줘"]
+    },
+    {
+      "id": "turn_on_tv", "icon": "tv", "color": "#4A90E2", "label": "Turn on the TV", "reply": "The TV is on.", "label_ko": "TV 켜기", "reply_ko": "TV를 켰어요.",
+      "options": ["turn on the tv", "tv on", "switch on the television", "start the tv", "티비 켜줘"]
+    },
+    {
+      "id": "turn_off_tv", "icon": "tv_off", "color": "#2F5E94", "label": "Turn off the TV", "reply": "The TV is off.", "label_ko": "TV 끄기", "reply_ko": "TV를 껐어요.",
+      "options": ["turn off the tv", "tv off", "switch off the television", "stop the tv", "티비 꺼줘"]
+    },
+    {
+      "id": "turn_on_computer", "icon": "computer", "color": "#34C3A0", "label": "Turn on the computer", "reply": "The computer is on.", "label_ko": "컴퓨터 켜기", "reply_ko": "컴퓨터를 켰어요.",
+      "options": ["turn on the computer", "start the pc", "boot the computer", "power on the pc", "컴퓨터 켜줘"]
+    },
+    {
+      "id": "turn_off_computer", "icon": "desktop_access_disabled", "color": "#237D67", "label": "Turn off the computer", "reply": "The computer is off.", "label_ko": "컴퓨터 끄기", "reply_ko": "컴퓨터를 껐어요.",
+      "options": ["turn off the computer", "shut down the pc", "power off the computer", "stop the pc", "컴퓨터 꺼줘"]
+    },
+    {
+      "id": "start_vacuum", "icon": "cleaning_services", "color": "#7ED321", "label": "Start the vacuum", "reply": "Starting the vacuum.", "label_ko": "청소기 돌리기", "reply_ko": "청소기를 돌릴게요.",
+      "options": ["start the vacuum", "clean the house", "run the robot vacuum", "vacuum the floor", "청소기 돌려줘"]
+    },
+    {
+      "id": "play_music", "icon": "music_note", "color": "#FF4F6D", "label": "Play music", "reply": "Playing some music.", "label_ko": "음악 틀기", "reply_ko": "음악을 틀게요.",
+      "options": ["play music", "play a song", "put on some tunes", "start the music", "음악 틀어줘"]
+    },
+    {
+      "id": "stop_music", "icon": "music_off", "color": "#A33348", "label": "Stop music", "reply": "Music stopped.", "label_ko": "음악 끄기", "reply_ko": "음악을 껐어요.",
+      "options": ["stop the music", "pause the song", "turn off the music", "silence the music", "음악 꺼줘"]
+    },
+    {
+      "id": "volume_up", "icon": "volume_up", "color": "#FF9F40", "label": "Volume up", "reply": "Volume up to {volume}%.", "label_ko": "볼륨 올리기", "reply_ko": "볼륨을 {volume}%로 올렸어요.",
+      "options": ["turn the volume up", "louder", "increase the volume", "raise the sound", "소리 키워줘"]
+    },
+    {
+      "id": "volume_down", "icon": "volume_down", "color": "#D9822B", "label": "Volume down", "reply": "Volume down to {volume}%.", "label_ko": "볼륨 내리기", "reply_ko": "볼륨을 {volume}%로 내렸어요.",
+      "options": ["turn the volume down", "quieter", "decrease the volume", "lower the sound", "소리 줄여줘"]
+    },
+    {
+      "id": "get_volume", "icon": "volume_mute", "color": "#B87333", "label": "Check the volume", "reply": "The volume is {volume}%.", "label_ko": "볼륨 확인", "reply_ko": "지금 볼륨은 {volume}%예요.",
+      "options": ["what is the volume", "check the volume", "how loud is it", "current volume level", "볼륨 몇이야"]
+    },
+    {
+      "id": "get_weather", "icon": "wb_sunny", "color": "#50B7F5", "label": "Check the weather", "reply": "", "label_ko": "날씨 확인", "reply_ko": "",
+      "options": ["what is the weather", "weather forecast", "will it rain", "how hot is it outside", "날씨 어때"]
+    },
+    {
+      "id": "get_time", "icon": "schedule", "color": "#9B8CFF", "label": "Check the time", "reply": "It's {time}.", "label_ko": "시간 확인", "reply_ko": "지금은 {time}이에요.",
+      "options": ["what time is it", "tell me the time", "current time", "what's the time in a city", "지금 몇 시야"]
+    },
+    {
+      "id": "get_location", "icon": "location_on", "color": "#E86A33", "label": "Where am I", "reply": "", "label_ko": "현재 위치", "reply_ko": "",
+      "options": ["where am i", "current location", "what city am i in", "find my location", "여기가 어디야"]
+    },
+    {
+      "id": "web_search", "icon": "search", "color": "#5AC8FA", "label": "Search the web", "reply": "", "label_ko": "웹 검색", "reply_ko": "",
+      "options": ["search the web for an answer", "a general knowledge question", "look this up", "latest news about a topic", "이게 뭐야"]
+    },
+    {
+      "id": "introduce_self", "icon": "auto_awesome", "color": "#7C6CF2", "label": "Who is Nova?", "reply": "", "label_ko": "노바 소개", "reply_ko": "",
+      "options": ["who are you", "what is your name", "what can you do", "introduce yourself", "너는 누구야"]
+    },
+    {
+      "id": "chat", "icon": "chat_bubble", "color": "#AAAAAA", "label": "Just chat", "reply": "", "label_ko": "대화", "reply_ko": "",
+      "options": ["small talk", "chat with the assistant", "say hello", "tell me a joke", "안녕"]
+    }
+  ]
+}

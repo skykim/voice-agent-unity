@@ -1,0 +1,28 @@
+{
+    "name": "VoiceAgent.Tests.Editor",
+    "rootNamespace": "VoiceAgent.Tests",
+    "references": [
+        "VoiceAgent.Runtime",
+        "VoiceAgent.Editor",
+        "Unity.InferenceEngine",
+        "Unity.InferenceEngine.Tokenization",
+        "Sky.Sentis.SileroVad",
+        "Sky.Sentis.SenseVoice",
+        "Sky.Sentis.Supertonic",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "Sky.Sentis.Gemma3"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "Newtonsoft.Json.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ]
+}

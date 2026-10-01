@@ -1,0 +1,261 @@
+{
+ "_comment": "On/off (and louder/quieter) pairs that never appear in training. The trainer reports accuracy on them after every run.",
+ "pairs": [
+  [
+   "switch the lights on",
+   "turn_on_light"
+  ],
+  [
+   "switch the lights off",
+   "turn_off_light"
+  ],
+  [
+   "could you turn the bedroom light on",
+   "turn_on_light"
+  ],
+  [
+   "could you turn the bedroom light off",
+   "turn_off_light"
+  ],
+  [
+   "turn the lamp on for me",
+   "turn_on_light"
+  ],
+  [
+   "turn the lamp off for me",
+   "turn_off_light"
+  ],
+  [
+   "kitchen lights on",
+   "turn_on_light"
+  ],
+  [
+   "kitchen lights off",
+   "turn_off_light"
+  ],
+  [
+   "switch the tv on",
+   "turn_on_tv"
+  ],
+  [
+   "switch the tv off",
+   "turn_off_tv"
+  ],
+  [
+   "can you put the television on",
+   "turn_on_tv"
+  ],
+  [
+   "can you shut the television off",
+   "turn_off_tv"
+  ],
+  [
+   "power the computer on",
+   "turn_on_computer"
+  ],
+  [
+   "power the computer off",
+   "turn_off_computer"
+  ],
+  [
+   "boot up my pc",
+   "turn_on_computer"
+  ],
+  [
+   "shut down my pc",
+   "turn_off_computer"
+  ],
+  [
+   "switch the music on",
+   "play_music"
+  ],
+  [
+   "switch the music off",
+   "stop_music"
+  ],
+  [
+   "get some music going",
+   "play_music"
+  ],
+  [
+   "cut the music right now",
+   "stop_music"
+  ],
+  [
+   "make it louder please",
+   "volume_up"
+  ],
+  [
+   "make it quieter please",
+   "volume_down"
+  ],
+  [
+   "bump the volume up a bit",
+   "volume_up"
+  ],
+  [
+   "bring the volume down a bit",
+   "volume_down"
+  ],
+  [
+   "i can hardly hear anything",
+   "volume_up"
+  ],
+  [
+   "that's way too loud",
+   "volume_down"
+  ],
+  [
+   "침실 불 좀 켜 줄래",
+   "turn_on_light"
+  ],
+  [
+   "침실 불 좀 꺼 줄래",
+   "turn_off_light"
+  ],
+  [
+   "주방 조명 켜",
+   "turn_on_light"
+  ],
+  [
+   "주방 조명 꺼",
+   "turn_off_light"
+  ],
+  [
+   "티비 좀 켜 봐",
+   "turn_on_tv"
+  ],
+  [
+   "티비 좀 꺼 봐",
+   "turn_off_tv"
+  ],
+  [
+   "컴퓨터 전원 켜 줘",
+   "turn_on_computer"
+  ],
+  [
+   "컴퓨터 전원 꺼 줘",
+   "turn_off_computer"
+  ],
+  [
+   "음악 좀 켜 줄래",
+   "play_music"
+  ],
+  [
+   "음악 좀 꺼 줄래",
+   "stop_music"
+  ],
+  [
+   "소리 좀 크게 해 줄래",
+   "volume_up"
+  ],
+  [
+   "소리 좀 작게 해 줄래",
+   "volume_down"
+  ],
+  [
+   "소리가 너무 작아서 안 들려",
+   "volume_up"
+  ],
+  [
+   "소리가 너무 커서 시끄러워",
+   "volume_down"
+  ],
+  [
+   "i want the lights on",
+   "turn_on_light"
+  ],
+  [
+   "i want the lights off",
+   "turn_off_light"
+  ],
+  [
+   "pc on",
+   "turn_on_computer"
+  ],
+  [
+   "pc off",
+   "turn_off_computer"
+  ],
+  [
+   "tv on now",
+   "turn_on_tv"
+  ],
+  [
+   "tv off now",
+   "turn_off_tv"
+  ],
+  [
+   "music on please",
+   "play_music"
+  ],
+  [
+   "music off please",
+   "stop_music"
+  ],
+  [
+   "hey nova lights on",
+   "turn_on_light"
+  ],
+  [
+   "hey nova lights off",
+   "turn_off_light"
+  ],
+  [
+   "can the computer be on",
+   "turn_on_computer"
+  ],
+  [
+   "can the computer be off",
+   "turn_off_computer"
+  ],
+  [
+   "turn it up a notch",
+   "volume_up"
+  ],
+  [
+   "turn it down a notch",
+   "volume_down"
+  ],
+  [
+   "불 켜",
+   "turn_on_light"
+  ],
+  [
+   "불 꺼",
+   "turn_off_light"
+  ],
+  [
+   "컴 켜",
+   "turn_on_computer"
+  ],
+  [
+   "컴 꺼",
+   "turn_off_computer"
+  ],
+  [
+   "음악 켜",
+   "play_music"
+  ],
+  [
+   "음악 꺼",
+   "stop_music"
+  ],
+  [
+   "티비 켜라",
+   "turn_on_tv"
+  ],
+  [
+   "티비 꺼라",
+   "turn_off_tv"
+  ],
+  [
+   "소리 올려 봐",
+   "volume_up"
+  ],
+  [
+   "소리 내려 봐",
+   "volume_down"
+  ]
+ ]
+}

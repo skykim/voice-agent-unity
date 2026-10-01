@@ -1,0 +1,46 @@
+{
+  "head" : {
+    "vars" : [ "item", "itemLabel", "num", "value", "valueLabel", "amount", "unit", "time", "precision", "when", "rank" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "time" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1912-06-23T00:00:00Z"
+      },
+      "precision" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+        "type" : "literal",
+        "value" : "11"
+      },
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7251"
+      },
+      "num" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#int",
+        "type" : "literal",
+        "value" : "0"
+      },
+      "value" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#dateTime",
+        "type" : "literal",
+        "value" : "1912-06-23T00:00:00Z"
+      },
+      "itemLabel" : {
+        "xml:lang" : "ko",
+        "type" : "literal",
+        "value" : "앨런 튜링"
+      },
+      "valueLabel" : {
+        "type" : "literal",
+        "value" : "1912-06-23T00:00:00Z"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#NormalRank"
+      }
+    } ]
+  }
+}

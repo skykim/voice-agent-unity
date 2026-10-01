@@ -1,0 +1,14 @@
+{
+    "name": "VoiceAgent.Tests.PlayMode",
+    "rootNamespace": "VoiceAgent.Tests",
+    "references": [
+        "VoiceAgent.Runtime",
+        "UnityEngine.UI",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "overrideReferences": true,
+    "precompiledReferences": ["nunit.framework.dll"],
+    "autoReferenced": false,
+    "defineConstraints": ["UNITY_INCLUDE_TESTS"]
+}

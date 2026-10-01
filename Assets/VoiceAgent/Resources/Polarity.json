@@ -1,0 +1,15 @@
+{
+  "_comment": "Commands that differ only in direction, and the words that name a direction. When a sentence names exactly one direction, the pair's probability moves to that side (JevlikeRanker and the trainer's on/off check both read this file). English cues match whole words, Korean cues match inside words.",
+  "pairs": [
+    { "on": "turn_on_light", "off": "turn_off_light", "family": "device" },
+    { "on": "turn_on_tv", "off": "turn_off_tv", "family": "device" },
+    { "on": "turn_on_computer", "off": "turn_off_computer", "family": "device" },
+    { "on": "play_music", "off": "stop_music", "family": "music" },
+    { "on": "volume_up", "off": "volume_down", "family": "volume" }
+  ],
+  "families": [
+    { "name": "device", "on": ["on", "boot up", "power up", "켜", "켜줘"], "off": ["off", "shut down", "power down", "꺼", "끄", "꺼줘"], "skip": ["시켜"] },
+    { "name": "music", "on": ["on", "play", "start", "켜", "틀어", "재생"], "off": ["off", "stop", "pause", "cut", "kill", "꺼", "끄", "멈춰", "정지", "그만"], "skip": ["시켜"] },
+    { "name": "volume", "on": ["up", "louder", "increase", "raise", "올려", "키워", "크게", "높여", "업"], "off": ["down", "quieter", "softer", "decrease", "lower", "내려", "줄여", "작게", "낮춰", "다운"], "skip": ["너무", "들려", "too"] }
+  ]
+}

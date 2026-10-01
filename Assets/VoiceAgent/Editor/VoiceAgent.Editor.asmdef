@@ -1,0 +1,12 @@
+{
+    "name": "VoiceAgent.Editor",
+    "rootNamespace": "VoiceAgent.Editor",
+    "references": [
+        "VoiceAgent.Runtime",
+        "Unity.InferenceEngine",
+        "Sky.Sentis.Gemma3"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ]
+}

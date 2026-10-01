@@ -1,0 +1,36 @@
+{
+  "head" : {
+    "vars" : [ "item", "itemLabel", "num", "value", "valueLabel", "amount", "unit", "time", "precision", "when", "rank" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q142"
+      },
+      "num" : {
+        "datatype" : "http://www.w3.org/2001/XMLSchema#int",
+        "type" : "literal",
+        "value" : "0"
+      },
+      "value" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3052772"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "France"
+      },
+      "valueLabel" : {
+        "xml:lang" : "mul",
+        "type" : "literal",
+        "value" : "Emmanuel Macron"
+      },
+      "rank" : {
+        "type" : "uri",
+        "value" : "http://wikiba.se/ontology#PreferredRank"
+      }
+    } ]
+  }
+}

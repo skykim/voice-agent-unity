@@ -1,0 +1,549 @@
+{
+ "_comment": "Sentences that appear nowhere in the training data (dataset rows or extra_phrases.json), for every command in English and Korean. The trainer reports how the written head and the runtime routing handle them; never train on them.",
+ "sentences": [
+  [
+   "it's too dark in here",
+   "turn_on_light"
+  ],
+  [
+   "can i get some light",
+   "turn_on_light"
+  ],
+  [
+   "light up the kitchen",
+   "turn_on_light"
+  ],
+  [
+   "불 좀 켜 볼래",
+   "turn_on_light"
+  ],
+  [
+   "너무 어두워",
+   "turn_on_light"
+  ],
+  [
+   "전등 켜",
+   "turn_on_light"
+  ],
+  [
+   "kill the lights",
+   "turn_off_light"
+  ],
+  [
+   "lights out",
+   "turn_off_light"
+  ],
+  [
+   "i'm going to sleep, turn the light off",
+   "turn_off_light"
+  ],
+  [
+   "전등 끌래",
+   "turn_off_light"
+  ],
+  [
+   "눈부셔 불 좀 꺼줘",
+   "turn_off_light"
+  ],
+  [
+   "조명 다 꺼줘",
+   "turn_off_light"
+  ],
+  [
+   "make the light a warm color",
+   "set_light_color"
+  ],
+  [
+   "i want purple lighting",
+   "set_light_color"
+  ],
+  [
+   "change the lamp to red",
+   "set_light_color"
+  ],
+  [
+   "조명 파란색으로",
+   "set_light_color"
+  ],
+  [
+   "불빛 노란색으로 바꿔",
+   "set_light_color"
+  ],
+  [
+   "분위기 있게 빨간 불로",
+   "set_light_color"
+  ],
+  [
+   "put the tv on",
+   "turn_on_tv"
+  ],
+  [
+   "i want to watch tv",
+   "turn_on_tv"
+  ],
+  [
+   "switch on the television",
+   "turn_on_tv"
+  ],
+  [
+   "티비 좀 켜",
+   "turn_on_tv"
+  ],
+  [
+   "텔레비전 보고 싶어",
+   "turn_on_tv"
+  ],
+  [
+   "tv 틀어",
+   "turn_on_tv"
+  ],
+  [
+   "turn the telly off",
+   "turn_off_tv"
+  ],
+  [
+   "no more tv",
+   "turn_off_tv"
+  ],
+  [
+   "shut the tv off",
+   "turn_off_tv"
+  ],
+  [
+   "티비 꺼",
+   "turn_off_tv"
+  ],
+  [
+   "텔레비전 그만 볼래 꺼줘",
+   "turn_off_tv"
+  ],
+  [
+   "tv 좀 끄자",
+   "turn_off_tv"
+  ],
+  [
+   "get my computer running",
+   "turn_on_computer"
+  ],
+  [
+   "wake up my pc",
+   "turn_on_computer"
+  ],
+  [
+   "power on the desktop",
+   "turn_on_computer"
+  ],
+  [
+   "컴퓨터 켜",
+   "turn_on_computer"
+  ],
+  [
+   "피씨 켜줘",
+   "turn_on_computer"
+  ],
+  [
+   "컴 좀 부팅해줘",
+   "turn_on_computer"
+  ],
+  [
+   "switch the pc off for the night",
+   "turn_off_computer"
+  ],
+  [
+   "power off my pc",
+   "turn_off_computer"
+  ],
+  [
+   "turn the laptop off",
+   "turn_off_computer"
+  ],
+  [
+   "컴퓨터 꺼",
+   "turn_off_computer"
+  ],
+  [
+   "피씨 종료해줘",
+   "turn_off_computer"
+  ],
+  [
+   "컴 좀 꺼줘",
+   "turn_off_computer"
+  ],
+  [
+   "vacuum the floor",
+   "start_vacuum"
+  ],
+  [
+   "clean the house",
+   "start_vacuum"
+  ],
+  [
+   "start the roomba",
+   "start_vacuum"
+  ],
+  [
+   "청소기 한 번 돌려",
+   "start_vacuum"
+  ],
+  [
+   "청소 좀 해줘",
+   "start_vacuum"
+  ],
+  [
+   "로봇청소기 켜",
+   "start_vacuum"
+  ],
+  [
+   "i want some music",
+   "play_music"
+  ],
+  [
+   "play something relaxing",
+   "play_music"
+  ],
+  [
+   "put on a song",
+   "play_music"
+  ],
+  [
+   "음악 좀 틀어",
+   "play_music"
+  ],
+  [
+   "신나는 음악 듣고 싶다",
+   "play_music"
+  ],
+  [
+   "노래 듣고 싶어",
+   "play_music"
+  ],
+  [
+   "stop playing that song",
+   "stop_music"
+  ],
+  [
+   "enough music",
+   "stop_music"
+  ],
+  [
+   "hold the music",
+   "stop_music"
+  ],
+  [
+   "음악 이제 꺼도 돼",
+   "stop_music"
+  ],
+  [
+   "노래 그만 듣자",
+   "stop_music"
+  ],
+  [
+   "음악 멈춰",
+   "stop_music"
+  ],
+  [
+   "i can't hear it",
+   "volume_up"
+  ],
+  [
+   "can you make that louder",
+   "volume_up"
+  ],
+  [
+   "turn it up a bit",
+   "volume_up"
+  ],
+  [
+   "소리 좀 키워",
+   "volume_up"
+  ],
+  [
+   "잘 안 들려",
+   "volume_up"
+  ],
+  [
+   "소리 더 크게",
+   "volume_up"
+  ],
+  [
+   "너무 시끄럽네",
+   "volume_down"
+  ],
+  [
+   "소리 좀 작게 해",
+   "volume_down"
+  ],
+  [
+   "귀 아프니까 소리 줄여",
+   "volume_down"
+  ],
+  [
+   "it is way too loud in here",
+   "volume_down"
+  ],
+  [
+   "can you make it less loud",
+   "volume_down"
+  ],
+  [
+   "조용히 좀 해",
+   "volume_down"
+  ],
+  [
+   "소리 너무 커서 머리 아파",
+   "volume_down"
+  ],
+  [
+   "왜 이렇게 시끄러워",
+   "volume_down"
+  ],
+  [
+   "소리 좀 작게 틀어",
+   "volume_down"
+  ],
+  [
+   "볼륨 너무 세다",
+   "volume_down"
+  ],
+  [
+   "it's really noisy in here",
+   "volume_down"
+  ],
+  [
+   "the music is blasting too hard",
+   "volume_down"
+  ],
+  [
+   "how loud is the speaker right now",
+   "get_volume"
+  ],
+  [
+   "what's the volume at",
+   "get_volume"
+  ],
+  [
+   "what volume is it on",
+   "get_volume"
+  ],
+  [
+   "지금 소리 크기 얼마야",
+   "get_volume"
+  ],
+  [
+   "볼륨 얼마로 돼 있어",
+   "get_volume"
+  ],
+  [
+   "음량 몇이야",
+   "get_volume"
+  ],
+  [
+   "is it going to rain today",
+   "get_weather"
+  ],
+  [
+   "how's the weather",
+   "get_weather"
+  ],
+  [
+   "do i need a jacket",
+   "get_weather"
+  ],
+  [
+   "오늘 날씨 어때",
+   "get_weather"
+  ],
+  [
+   "비 와",
+   "get_weather"
+  ],
+  [
+   "밖에 추워",
+   "get_weather"
+  ],
+  [
+   "tell me the time",
+   "get_time"
+  ],
+  [
+   "what's the time right now",
+   "get_time"
+  ],
+  [
+   "do you know what time it is",
+   "get_time"
+  ],
+  [
+   "지금 몇 시쯤이야",
+   "get_time"
+  ],
+  [
+   "몇 시인지 알아",
+   "get_time"
+  ],
+  [
+   "시간 좀 알려줄래",
+   "get_time"
+  ],
+  [
+   "where exactly am i right now",
+   "get_location"
+  ],
+  [
+   "what city am i in",
+   "get_location"
+  ],
+  [
+   "which country is this",
+   "get_location"
+  ],
+  [
+   "여기 어디야",
+   "get_location"
+  ],
+  [
+   "나 지금 어디 있어",
+   "get_location"
+  ],
+  [
+   "현재 위치 알려줘",
+   "get_location"
+  ],
+  [
+   "who painted the starry night",
+   "web_search"
+  ],
+  [
+   "how far away is mars",
+   "web_search"
+  ],
+  [
+   "what is an eclipse",
+   "web_search"
+  ],
+  [
+   "장영실은 누구야",
+   "web_search"
+  ],
+  [
+   "일식이 뭐야",
+   "web_search"
+  ],
+  [
+   "지구에서 달까지 거리는",
+   "web_search"
+  ],
+  [
+   "how should i address you",
+   "introduce_self"
+  ],
+  [
+   "tell me a bit about you",
+   "introduce_self"
+  ],
+  [
+   "what are you able to do",
+   "introduce_self"
+  ],
+  [
+   "너는 누구니",
+   "introduce_self"
+  ],
+  [
+   "너 뭐 할 줄 알아",
+   "introduce_self"
+  ],
+  [
+   "자기소개 좀",
+   "introduce_self"
+  ],
+  [
+   "what's up",
+   "chat"
+  ],
+  [
+   "i'm so tired today",
+   "chat"
+  ],
+  [
+   "you're so smart",
+   "chat"
+  ],
+  [
+   "what are you doing",
+   "chat"
+  ],
+  [
+   "i'm hungry",
+   "chat"
+  ],
+  [
+   "you sound nice today",
+   "chat"
+  ],
+  [
+   "i had a great day",
+   "chat"
+  ],
+  [
+   "my cat is so cute",
+   "chat"
+  ],
+  [
+   "오늘 너무 피곤해",
+   "chat"
+  ],
+  [
+   "배고파",
+   "chat"
+  ],
+  [
+   "뭐 하고 있어",
+   "chat"
+  ],
+  [
+   "우리 강아지 귀여워",
+   "chat"
+  ],
+  [
+   "너 목소리 좋다",
+   "chat"
+  ],
+  [
+   "오늘 좋은 하루였어",
+   "chat"
+  ],
+  [
+   "너 똑똑하다",
+   "chat"
+  ],
+  [
+   "기분이 별로야",
+   "chat"
+  ],
+  [
+   "open the curtains",
+   "chat"
+  ],
+  [
+   "turn on the air conditioner",
+   "chat"
+  ],
+  [
+   "book me a taxi",
+   "chat"
+  ],
+  [
+   "커튼 쳐줘",
+   "chat"
+  ],
+  [
+   "에어컨 켜줘",
+   "chat"
+  ],
+  [
+   "택시 불러줘",
+   "chat"
+  ]
+ ]
+}

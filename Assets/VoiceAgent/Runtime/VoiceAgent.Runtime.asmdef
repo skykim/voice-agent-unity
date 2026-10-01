@@ -1,0 +1,15 @@
+{
+    "name": "VoiceAgent.Runtime",
+    "rootNamespace": "VoiceAgent",
+    "references": [
+        "Unity.InferenceEngine",
+        "Unity.InferenceEngine.Tokenization",
+        "Sky.Sentis.SileroVad",
+        "Sky.Sentis.SenseVoice",
+        "Sky.Sentis.Supertonic",
+        "UnityEngine.UI",
+        "Unity.InputSystem",
+        "Sky.Sentis.Gemma3"
+    ],
+    "autoReferenced": true
+}
