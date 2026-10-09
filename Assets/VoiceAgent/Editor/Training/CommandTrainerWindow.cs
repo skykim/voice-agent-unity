@@ -59,7 +59,7 @@ namespace VoiceAgent.Editor
             var s = m_Settings;
             EditorGUI.BeginChangeCheck();
             m_Scroll = EditorGUILayout.BeginScrollView(m_Scroll);
-            EditorGUILayout.HelpBox("Encodes every training sentence once with the frozen Gemma3 encoder, then trains the jevlike head " +
+            EditorGUILayout.HelpBox("Encodes every training sentence once with the frozen Gemma3 encoder, then trains the Decision AI head " +
                                     $"on the cached states and writes it to {Relative(ModelRoots.IntentHead)}. About a minute with the defaults.", MessageType.None);
 
             Section("Head");

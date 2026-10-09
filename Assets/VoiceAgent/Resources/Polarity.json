@@ -1,5 +1,5 @@
 {
-  "_comment": "Commands that differ only in direction, and the words that name a direction. When a sentence names exactly one direction, the pair's probability moves to that side (JevlikeRanker and the trainer's on/off check both read this file). English cues match whole words, Korean cues match inside words.",
+  "_comment": "Commands that differ only in direction, and the words that name a direction. When a sentence names exactly one direction, the pair's probability moves to that side (DecisionAIRanker and the trainer's on/off check both read this file). English cues match whole words, Korean cues match inside words.",
   "pairs": [
     { "on": "turn_on_light", "off": "turn_off_light", "family": "device" },
     { "on": "turn_on_tv", "off": "turn_off_tv", "family": "device" },

@@ -7,7 +7,7 @@ using UnityEngine;
 namespace VoiceAgent.Scenes
 {
     /// <summary>
-    /// Everything together: mic → Silero VAD → SenseVoice (partials re-rank the chips live) → Gemma3 + jevlike picks the
+    /// Everything together: mic → Silero VAD → SenseVoice (partials re-rank the chips live) → Gemma3 + Decision AI picks the
     /// command → the home changes or the web answers → Supertonic 3 speaks as Nova. Chat and low-confidence turns go to
     /// Gemma3 generation with the persona prompt.
     /// </summary>
@@ -23,7 +23,7 @@ namespace VoiceAgent.Scenes
         AssistantController m_Controller;
         VoiceInput m_Voice;
         Gemma3Model m_Gemma;
-        JevlikeRanker m_Ranker;
+        DecisionAIRanker m_Ranker;
         readonly Stopwatch m_SinceSpeechEnd = new();
         float m_SpeechStarted, m_SpeechSeconds;
         int m_Partials;
@@ -56,7 +56,7 @@ namespace VoiceAgent.Scenes
             try
             {
                 m_Gemma = ModelRoots.LoadGemma(persona.system_prompt);
-                m_Ranker = new JevlikeRanker(m_Gemma, ModelRoots.IntentHead, catalog);
+                m_Ranker = new DecisionAIRanker(m_Gemma, ModelRoots.IntentHead, catalog);
             }
             catch (System.Exception e)
             {

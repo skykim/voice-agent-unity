@@ -35,7 +35,7 @@ namespace VoiceAgent
 
         readonly CommandCatalog m_Catalog;
         readonly SmartHome m_Home;
-        readonly JevlikeRanker m_Ranker;
+        readonly DecisionAIRanker m_Ranker;
         readonly AssistantView m_View;
         readonly Gemma3Model m_Gemma;
         readonly SpeechOutput m_Speech;
@@ -56,7 +56,7 @@ namespace VoiceAgent
 
         public bool IsBusy => m_Busy;
 
-        public AssistantController(CommandCatalog catalog, Persona persona, SmartHome home, JevlikeRanker ranker, Gemma3Model gemma, AssistantView view,
+        public AssistantController(CommandCatalog catalog, Persona persona, SmartHome home, DecisionAIRanker ranker, Gemma3Model gemma, AssistantView view,
             ProceduralMusic music, SpeechOutput speech = null, InfoAgent info = null, TimingPanel timing = null)
         {
             m_Timing = timing;
@@ -140,7 +140,7 @@ namespace VoiceAgent
             m_IntentSeconds = intentClock.Elapsed.TotalSeconds;
             if (m_Timing != null)
             {
-                m_Timing.Stage(1, "Intent / Gemma3 + jevlike", m_IntentSeconds * 1000, m_SttSeconds);
+                m_Timing.Stage(1, "Intent / Gemma3 + Decision AI", m_IntentSeconds * 1000, m_SttSeconds);
                 m_Timing.Verdict(best.Command.id, best.Probability);
             }
             m_ActionClock.Restart();

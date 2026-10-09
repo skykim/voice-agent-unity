@@ -33,7 +33,7 @@ namespace VoiceAgent
         public static PolarityGuard Load(string[] intents) =>
             new(JsonUtility.FromJson<Spec>(Resources.Load<TextAsset>("Polarity").text), intents);
 
-        /// <summary><paramref name="normalized"/> is <see cref="JevlikeRanker.Normalize"/>d text; returns adjusted probabilities.</summary>
+        /// <summary><paramref name="normalized"/> is <see cref="DecisionAIRanker.Normalize"/>d text; returns adjusted probabilities.</summary>
         public float[] Apply(string normalized, float[] probs)
         {
             var top = 0;

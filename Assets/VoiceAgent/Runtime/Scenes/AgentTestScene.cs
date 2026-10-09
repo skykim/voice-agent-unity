@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace VoiceAgent.Scenes
 {
-    /// <summary>Gemma3 270M + jevlike alone: live probability for every command as you type, and the persona's chat reply.</summary>
+    /// <summary>Gemma3 270M + Decision AI alone: live probability for every command as you type, and the persona's chat reply.</summary>
     public sealed class AgentTestScene : MonoBehaviour
     {
         [SerializeField] TestScreenView m_Screen;
@@ -21,7 +21,7 @@ namespace VoiceAgent.Scenes
         RectTransform[] m_Fills;
         Text[] m_Percents;
         Gemma3Model m_Gemma;
-        JevlikeRanker m_Ranker;
+        DecisionAIRanker m_Ranker;
         float m_ScoreAt = -1f;
 
         async void Start()
@@ -40,7 +40,7 @@ namespace VoiceAgent.Scenes
             {
                 m_Persona = Persona.Load();
                 m_Gemma = ModelRoots.LoadGemma(m_Persona.system_prompt);
-                m_Ranker = new JevlikeRanker(m_Gemma, ModelRoots.IntentHead, m_Catalog);
+                m_Ranker = new DecisionAIRanker(m_Gemma, ModelRoots.IntentHead, m_Catalog);
             }
             catch (System.Exception e)
             {
@@ -51,7 +51,7 @@ namespace VoiceAgent.Scenes
             m_Ranker.Score("warmup");
             await m_Gemma.GenerateAsync("hi", 2);
             if (!this) return;
-            m_Screen.AppendLog($"loaded in {clock.Elapsed.TotalSeconds:F1} s (jevlike val acc {m_Ranker.ValidationAccuracy:P1})");
+            m_Screen.AppendLog($"loaded in {clock.Elapsed.TotalSeconds:F1} s (Decision AI val acc {m_Ranker.ValidationAccuracy:P1})");
             Score();
         }
 

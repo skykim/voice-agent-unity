@@ -7,7 +7,7 @@ using UnityEngine;
 namespace VoiceAgent.Editor
 {
     /// <summary>
-    /// Writes trained heads as the one file <see cref="JevlikeRanker"/> loads: a Sentis graph from token states
+    /// Writes trained heads as the one file <see cref="DecisionAIRanker"/> loads: a Sentis graph from token states
     /// [length × width] to command probabilities (the heads averaged), with the head's settings as constant outputs.
     /// </summary>
     public static class HeadExporter
@@ -29,7 +29,7 @@ namespace VoiceAgent.Editor
             int width = heads[0].Width, count = heads[0].Count;
             var scale = 1f / Mathf.Sqrt(heads[0].Rank);
             var graph = new FunctionalGraph();
-            var states = graph.AddInput<float>(new DynamicTensorShape(-1, width), JevlikeRanker.InputName);
+            var states = graph.AddInput<float>(new DynamicTensorShape(-1, width), DecisionAIRanker.InputName);
             FunctionalTensor sum = null;
             foreach (var head in heads)
             {
@@ -43,11 +43,11 @@ namespace VoiceAgent.Editor
             }
             var outputs = new (string Name, FunctionalTensor Tensor)[]
             {
-                (JevlikeRanker.ProbsName, heads.Count == 1 ? sum : sum * (1f / heads.Count)),
-                (JevlikeRanker.LayerName, Functional.Constant(new[] { layer })),
-                (JevlikeRanker.MaxTokensName, Functional.Constant(new[] { maxTokens })),
-                (JevlikeRanker.IntentsName, Functional.Constant(string.Join("\n", intents).Select(c => (int)c).ToArray())),
-                (JevlikeRanker.ValidationName, Functional.Constant(new[] { valAccuracy, valEce })),
+                (DecisionAIRanker.ProbsName, heads.Count == 1 ? sum : sum * (1f / heads.Count)),
+                (DecisionAIRanker.LayerName, Functional.Constant(new[] { layer })),
+                (DecisionAIRanker.MaxTokensName, Functional.Constant(new[] { maxTokens })),
+                (DecisionAIRanker.IntentsName, Functional.Constant(string.Join("\n", intents).Select(c => (int)c).ToArray())),
+                (DecisionAIRanker.ValidationName, Functional.Constant(new[] { valAccuracy, valEce })),
             };
             var model = graph.Compile(outputs.Select(o => o.Tensor).ToArray());
             for (var i = 0; i < outputs.Length; i++) model.outputs[i] = new Model.Output { name = outputs[i].Name, index = model.outputs[i].index };

@@ -26,7 +26,7 @@ namespace VoiceAgent
         public Color Tint => ColorUtility.TryParseHtmlString(color, out var c) ? c : Color.gray;
     }
 
-    /// <summary>The command set (Resources/Commands.json), shared with the trainer; order = jevlike option order.</summary>
+    /// <summary>The command set (Resources/Commands.json), shared with the trainer; order = Decision AI option order.</summary>
     public sealed class CommandCatalog
     {
         [Serializable]

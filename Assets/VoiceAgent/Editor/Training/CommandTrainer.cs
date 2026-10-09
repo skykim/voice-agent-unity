@@ -13,7 +13,7 @@ namespace VoiceAgent.Editor
 {
     /// <summary>
     /// Trains the command picker: Gemma3 token states for every training sentence (the FP32 encoder the runtime scores
-    /// with), then the jevlike head, checked with the on/off guard. Writes StreamingAssets/Intent/jevlike_head.sentis
+    /// with), then the Decision AI head, checked with the on/off guard. Writes StreamingAssets/Intent/decision_ai_head.sentis
     /// and a report in Logs/train-command-head.json.
     /// Settings are edited in <see cref="CommandTrainerWindow"/> (VoiceAgent/Train Command Head…).
     /// </summary>
@@ -182,7 +182,7 @@ namespace VoiceAgent.Editor
                 }
 
                 var polarity = JObject.Parse(File.ReadAllText(Path.Combine(DataFolder, "polarity_eval.json")))["pairs"]
-                    .Select(p => (Text: JevlikeRanker.Normalize((string)p[0]), Expected: catalog.IndexOf((string)p[1]))).ToList();
+                    .Select(p => (Text: DecisionAIRanker.Normalize((string)p[0]), Expected: catalog.IndexOf((string)p[1]))).ToList();
                 var polarityExamples = encoder.Examples(polarity.Select(p => (p.Text, p.Expected)).ToList());
                 var polarityProbs = Score(polarityExamples, scoring: written);
                 var polarityHits = polarity.Where((p, i) => ArgMax(polarityProbs[i]) == p.Expected).Count();
@@ -199,7 +199,7 @@ namespace VoiceAgent.Editor
                     HeadExporter.Write(settings.HeadOut, written, intents, settings.Layer, settings.MaxTokens, valAccuracy, valEce);
                     return 0;
                 });
-                var samples = encoder.Examples(s_Samples.Select(s => (JevlikeRanker.Normalize(s), 0)).ToList());
+                var samples = encoder.Examples(s_Samples.Select(s => (DecisionAIRanker.Normalize(s), 0)).ToList());
                 var sampleProbs = Score(samples, scoring: written);
                 for (var i = 0; i < samples.Count; i++)
                     Line($"  '{s_Samples[i]}' → " + string.Join(", ", Enumerable.Range(0, intents.Length).OrderByDescending(o => sampleProbs[i][o]).Take(3)
@@ -329,7 +329,7 @@ namespace VoiceAgent.Editor
         {
             if (!File.Exists(path)) return default;
             var rows = JObject.Parse(File.ReadAllText(path))["sentences"]
-                .Select(p => (Text: JevlikeRanker.Normalize((string)p[0]), Expected: (string)p[1])).ToList();
+                .Select(p => (Text: DecisionAIRanker.Normalize((string)p[0]), Expected: (string)p[1])).ToList();
             var probs = score(encoder.Examples(rows.Select(r => (r.Text, catalog.IndexOf(r.Expected))).ToList()));
             int top1 = 0, right = 0, asks = 0;
             var wrong = new List<string>();

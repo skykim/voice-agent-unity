@@ -14,7 +14,7 @@ namespace VoiceAgent.Editor
     /// The training sentences: the functiongemma-270m-finetune rows in the chosen languages (refusals become "chat"
     /// unless an extra-phrase command covers them) plus extra_phrases.json, with a fifth of each command's extra
     /// phrases (at least one, never all) held out. Training sentences also appear with a filler word and without
-    /// apostrophes; everything is normalized like <see cref="JevlikeRanker.Normalize"/>. A validation sentence that is
+    /// apostrophes; everything is normalized like <see cref="DecisionAIRanker.Normalize"/>. A validation sentence that is
     /// also a training sentence (the dataset repeats some rows, and some extra phrases are dataset rows) is dropped.
     /// </summary>
     public sealed class TrainingData
@@ -73,7 +73,7 @@ namespace VoiceAgent.Editor
             var validated = new HashSet<string>();
             foreach (var (text, label) in valRows)
             {
-                var normalized = JevlikeRanker.Normalize(text);
+                var normalized = DecisionAIRanker.Normalize(text);
                 if (!trained.Contains(normalized) && validated.Add(normalized)) data.Val.Add((normalized, label));
             }
 
@@ -112,7 +112,7 @@ namespace VoiceAgent.Editor
         {
             var fillers = LangDetect.Of(text) == Lang.Ko ? s_KoFillers : s_EnFillers;
             var variants = new[] { text, fillers[random.Next(fillers.Length)] + text, text.Replace("'", string.Empty) };
-            return variants.Select(JevlikeRanker.Normalize).Distinct();
+            return variants.Select(DecisionAIRanker.Normalize).Distinct();
         }
 
         static void Shuffle<T>(IList<T> list, System.Random random)

@@ -1372,7 +1372,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'jevlike option-attention head: one forward pass scores every command.'
+  m_Text: 'Decision AI option-attention head: one forward pass scores every command.'
 --- !u!222 &1182938949
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1812,7 +1812,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Agent Test / Gemma3 270M + jevlike
+  m_Text: Agent Test / Gemma3 270M + Decision AI
 --- !u!222 &1483312486
 CanvasRenderer:
   m_ObjectHideFlags: 0

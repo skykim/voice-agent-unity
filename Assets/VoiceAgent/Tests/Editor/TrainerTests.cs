@@ -58,11 +58,11 @@ namespace VoiceAgent.Tests
                 return trainer;
             }).ToList();
 
-            var path = Path.Combine(Path.GetTempPath(), "jevlike_head_trainer_test.sentis");
+            var path = Path.Combine(Path.GetTempPath(), "decision_ai_head_trainer_test.sentis");
             try
             {
                 HeadExporter.Write(path, heads, catalog.Commands.Select(c => c.id).ToList(), 12, 48, 0.5f, 0.1f);
-                using var ranker = new JevlikeRanker(null, path, catalog);
+                using var ranker = new DecisionAIRanker(null, path, catalog);
                 Assert.AreEqual(12, ranker.Layer);
                 Assert.AreEqual(0.5f, ranker.ValidationAccuracy);
                 var predictions = heads.Select(h => h.Predict(batch)).ToList();

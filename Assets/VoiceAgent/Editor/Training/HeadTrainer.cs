@@ -14,9 +14,9 @@ namespace VoiceAgent.Editor
     }
 
     /// <summary>
-    /// jevlike's option-attention head (github.com/vinnylarouge/jevlike, MIT) with a hand-written backward pass, trained
+    /// Decision AI's option-attention head (based on jevlike, github.com/vinnylarouge/jevlike, MIT) with a hand-written backward pass, trained
     /// with AdamW, dropout on the token states, label smoothing and gradient clipping. The option
-    /// queries are folded into the key and value weights as in <see cref="JevlikeRanker"/>, so a sentence costs a few
+    /// queries are folded into the key and value weights as in <see cref="DecisionAIRanker"/>, so a sentence costs a few
     /// dot products per token and command; the batch is split into fixed chunks so results don't depend on threading.
     /// </summary>
     public sealed class HeadTrainer

@@ -7,16 +7,16 @@ using Unity.InferenceEngine;
 namespace VoiceAgent
 {
     /// <summary>
-    /// jevlike option scorer (github.com/vinnylarouge/jevlike, MIT) over frozen Gemma3 token states from the layer the
+    /// Decision AI option scorer (based on jevlike, github.com/vinnylarouge/jevlike, MIT) over frozen Gemma3 token states from the layer the
     /// head was trained on:
     /// each command's option vector queries the context tokens, a shared dot product gives one logit per
     /// command, and a softmax runs across commands: one encoder pass, no decoding. With several heads the
     /// probabilities are averaged; <see cref="PolarityGuard"/> then settles on/off pairs by their direction words.
-    /// The head is one Sentis graph (StreamingAssets/Intent/jevlike_head.sentis from VoiceAgent/Train Command Head): token
+    /// The head is one Sentis graph (StreamingAssets/Intent/decision_ai_head.sentis from VoiceAgent/Train Command Head): token
     /// states [length × width] → command probabilities, run on the CPU, with the Gemma3 layer, token limit, command order
     /// and validation numbers as constant outputs.
     /// </summary>
-    public sealed class JevlikeRanker : IDisposable
+    public sealed class DecisionAIRanker : IDisposable
     {
         /// <summary>The graph's input: token states [length × width] without the &lt;bos&gt; row.</summary>
         public const string InputName = "states";
@@ -33,7 +33,7 @@ namespace VoiceAgent
         public float ValidationAccuracy { get; }
         public int Layer => m_Layer;
 
-        public JevlikeRanker(Gemma3Model gemma, string headPath, CommandCatalog catalog)
+        public DecisionAIRanker(Gemma3Model gemma, string headPath, CommandCatalog catalog)
         {
             m_Gemma = gemma;
             var name = Path.GetFileName(headPath);

@@ -13,7 +13,7 @@ namespace VoiceAgent.Tests
 {
     /// <summary>
     /// Gemma3 against reference token ids and hidden states from Hugging Face and PyTorch (Golden/gemma_golden.json),
-    /// batched and per-layer encoding, the jevlike head on everyday phrases, and a mic-free TTS → VAD → STT → jevlike loop.
+    /// batched and per-layer encoding, the Decision AI head on everyday phrases, and a mic-free TTS → VAD → STT → Decision AI loop.
     /// </summary>
     public class ModelTests
     {
@@ -33,7 +33,7 @@ namespace VoiceAgent.Tests
 
         static CommandCatalog s_Catalog;
         static Gemma3Model s_Gemma;
-        static JevlikeRanker s_Ranker;
+        static DecisionAIRanker s_Ranker;
         static Golden[] s_Golden;
 
         [OneTimeSetUp]
@@ -44,7 +44,7 @@ namespace VoiceAgent.Tests
                 Assert.Ignore($"{ModelRoots.GemmaPackage} is not installed");
             s_Catalog = CommandCatalog.Load();
             s_Gemma = ModelRoots.LoadGemma(null);
-            s_Ranker = new JevlikeRanker(s_Gemma, ModelRoots.IntentHead, s_Catalog);
+            s_Ranker = new DecisionAIRanker(s_Gemma, ModelRoots.IntentHead, s_Catalog);
             var json = File.ReadAllText("Assets/VoiceAgent/Tests/Editor/Golden/gemma_golden.json");
             s_Golden = JsonUtility.FromJson<GoldenList>("{\"items\":" + json + "}").items;
         }
@@ -60,7 +60,7 @@ namespace VoiceAgent.Tests
         public void Tokenizer_MatchesHuggingFace()
         {
             foreach (var g in s_Golden)
-                CollectionAssert.AreEqual(g.ids, s_Gemma.Tokenize(JevlikeRanker.Normalize(g.text)), g.text);
+                CollectionAssert.AreEqual(g.ids, s_Gemma.Tokenize(DecisionAIRanker.Normalize(g.text)), g.text);
         }
 
         [Test]
@@ -167,7 +167,7 @@ namespace VoiceAgent.Tests
         [TestCase("")]
         [TestCase(".")]
         [TestCase(" ?! ")]
-        public void Jevlike_TextWithoutWordsIsUniform(string text)
+        public void DecisionAI_TextWithoutWordsIsUniform(string text)
         {
             var probs = s_Ranker.Score(text);
             Assert.AreEqual(s_Catalog.Count, probs.Length);
@@ -190,10 +190,10 @@ namespace VoiceAgent.Tests
         [TestCase("노래 틀어줘", "play_music")]
         [TestCase("소리 좀 키워줘", "volume_up")]
         [TestCase("너 이름이 뭐야", "introduce_self")]
-        public void Jevlike_UnderstandsEverydayPhrases(string text, string expected)
+        public void DecisionAI_UnderstandsEverydayPhrases(string text, string expected)
         {
             var top = Ranking.Top(s_Catalog, s_Ranker.Score(text), 1)[0];
-            Debug.Log($"[Jevlike] '{text}' → {top.Command.id} {top.Probability:P0}");
+            Debug.Log($"[DecisionAI] '{text}' → {top.Command.id} {top.Probability:P0}");
             Assert.AreEqual(expected, top.Command.id, text);
         }
 
@@ -215,7 +215,7 @@ namespace VoiceAgent.Tests
         }
 
         [UnityTest]
-        public IEnumerator TtsVadSttJevlike_EndToEnd()
+        public IEnumerator TtsVadSttDecisionAI_EndToEnd()
         {
             using var tts = new SupertonicTts(BackendType.GPUCompute);
             tts.Load(ModelRoots.Tts);
