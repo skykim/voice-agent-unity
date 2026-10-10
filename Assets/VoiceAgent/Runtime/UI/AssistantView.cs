@@ -121,7 +121,7 @@ namespace VoiceAgent.UI
                 MicState.Listening => Color.Lerp(new Color(1f, 0.3f, 0.4f), new Color(1f, 0.6f, 0.2f), Mathf.PingPong(Time.time * 2f, 1f)),
                 MicState.Thinking => Color.Lerp(new Color(0.55f, 0.4f, 1f), new Color(0.3f, 0.8f, 1f), Mathf.PingPong(Time.time * 1.5f, 1f)),
                 MicState.Speaking => new Color(0.3f, 0.85f, 0.7f),
-                _ => new Color(0.95f, 0.4f, 0.5f),
+                _ => new Color(0.24f, 0.84f, 0.96f),
             };
             m_OrbRing.color = color;
             var scale = m_Mic == MicState.Listening ? 1f + Mathf.Clamp01(m_Level * 6f) * 0.25f : 1f;
