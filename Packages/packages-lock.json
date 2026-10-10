@@ -7,7 +7,7 @@
       "dependencies": {
         "com.unity.ai.inference": "2.6.1"
       },
-      "hash": "a7c3d09487b98a499693faca2614ebe90ac86e09"
+      "hash": "4f60df8e905011d54c5433a55cec09d609e2485d"
     },
     "com.sky.sentis.sensevoice": {
       "version": "https://huggingface.co/Sky-Kim/com.sky.sentis.sensevoice.git",
@@ -16,7 +16,7 @@
       "dependencies": {
         "com.unity.ai.inference": "2.6.1"
       },
-      "hash": "76b7cf877c491889dcef90e38c8ff258bc0e0436"
+      "hash": "56e6a11f5bdace9a0db4a4cc08c77198575ea9e1"
     },
     "com.sky.sentis.silero-vad": {
       "version": "https://huggingface.co/Sky-Kim/com.sky.sentis.silero-vad.git",
@@ -25,7 +25,7 @@
       "dependencies": {
         "com.unity.ai.inference": "2.6.1"
       },
-      "hash": "3b247daf2dca66e68075e035f756315ce11bea4c"
+      "hash": "9946e84d561fd35672f65b91d72b48fd16297a57"
     },
     "com.sky.sentis.supertonic": {
       "version": "https://huggingface.co/Sky-Kim/com.sky.sentis.supertonic.git",
@@ -35,7 +35,7 @@
         "com.unity.ai.inference": "2.6.1",
         "com.unity.nuget.newtonsoft-json": "3.2.2"
       },
-      "hash": "f1e35db77f09b4ff89e534e7612fd315f6f22ac8"
+      "hash": "c1e1e7f542964ebf4921363c384b20d749c595bf"
     },
     "com.unity.ai.inference": {
       "version": "2.6.1",
@@ -116,6 +116,13 @@
       "dependencies": {
         "com.unity.modules.uielements": "1.0.0"
       },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.mobile.android-logcat": {
+      "version": "1.4.7",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.nuget.mono-cecil": {

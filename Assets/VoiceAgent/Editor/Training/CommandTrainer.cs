@@ -12,7 +12,7 @@ using Debug = UnityEngine.Debug;
 namespace VoiceAgent.Editor
 {
     /// <summary>
-    /// Trains the command picker: Gemma3 token states for every training sentence (the FP32 encoder the runtime scores
+    /// Trains the command picker: Gemma3 token states for every training sentence (the FP16 encoder the runtime scores
     /// with), then the Decision AI head, checked with the on/off guard. Writes StreamingAssets/Intent/decision_ai_head.sentis
     /// and a report in Logs/train-command-head.json.
     /// Settings are edited in <see cref="CommandTrainerWindow"/> (VoiceAgent/Train Command Head…).

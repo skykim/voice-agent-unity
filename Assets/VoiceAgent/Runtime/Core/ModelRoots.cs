@@ -59,7 +59,7 @@ namespace VoiceAgent
 
         /// <summary>
         /// Android: copies every file in the build's manifest from the APK to persistentDataPath, skipping files already
-        /// copied at the right size (the first launch copies about 2.7 GB). Other platforms read StreamingAssets in place.
+        /// copied at the right size (the first launch copies about 1.4 GB). Other platforms read StreamingAssets in place.
         /// </summary>
         public static async Awaitable PrepareAsync(System.Action<string> progress = null)
         {

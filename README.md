@@ -14,11 +14,11 @@ It understands **English and Korean** and answers in the language you used.
 
 | Stage | Model | Runs on | Source |
 |---|---|---|---|
-| Voice activity | Silero VAD (FP32) | CPU | [`com.sky.sentis.silero-vad`](https://huggingface.co/Sky-Kim/com.sky.sentis.silero-vad) |
-| Speech to text | SenseVoice-Small (FP32), auto language | GPU | [`com.sky.sentis.sensevoice`](https://huggingface.co/Sky-Kim/com.sky.sentis.sensevoice) |
-| Intent | gemma-3-270m-it (FP32), frozen, plus a Decision AI attention head | GPU + CPU | [`com.sky.sentis.gemma3-270m-it`](https://huggingface.co/Sky-Kim/com.sky.sentis.gemma3-270m-it) + `Editor/Training/` |
+| Voice activity | Silero VAD (FP16) | CPU | [`com.sky.sentis.silero-vad`](https://huggingface.co/Sky-Kim/com.sky.sentis.silero-vad) |
+| Speech to text | SenseVoice-Small (FP16), auto language | GPU | [`com.sky.sentis.sensevoice`](https://huggingface.co/Sky-Kim/com.sky.sentis.sensevoice) |
+| Intent | gemma-3-270m-it (FP16), frozen, plus a Decision AI attention head | GPU + CPU | [`com.sky.sentis.gemma3-270m-it`](https://huggingface.co/Sky-Kim/com.sky.sentis.gemma3-270m-it) + `Editor/Training/` |
 | Chat fallback | gemma-3-270m-it greedy generation (same graph, KV cache) | GPU | same package |
-| Text to speech | Supertonic 3 (FP32), voice F2 | GPU | [`com.sky.sentis.supertonic`](https://huggingface.co/Sky-Kim/com.sky.sentis.supertonic) |
+| Text to speech | Supertonic 3 (FP16), voice F2 | GPU | [`com.sky.sentis.supertonic`](https://huggingface.co/Sky-Kim/com.sky.sentis.supertonic) |
 
 Typical latency from the end of speech to the first sound of the reply on an Apple M5 Max:
 
@@ -34,11 +34,11 @@ Typical latency from the end of speech to the first sound of the reply on an App
 - Unity **6000.6.1f1** (URP).
 - [git-lfs](https://git-lfs.com). The four model packages are Git repositories on Hugging Face with LFS model files.
 
-**Run the demo.** Clone the repository and open it in Unity. The Package Manager fetches the FP32 models from Hugging Face (about 3 GB in total, the first time only). Then open `Assets/Scenes/VoiceAgentDemo.unity`, press Play, and tap the orb or type.
+**Run the demo.** Clone the repository and open it in Unity. The Package Manager fetches the FP16 models from Hugging Face (about 1.4 GB in total, the first time only). Then open `Assets/Scenes/VoiceAgentDemo.unity`, press Play, and tap the orb or type.
 
 The trained intent head (`Assets/StreamingAssets/Intent/decision_ai_head.sentis`) is included, so no training is needed. To retrain it, see [Training the intent head](#training-the-intent-head).
 
-The project runs in the Editor: `ModelRoots` reads the models straight from each package's `Models~` folder, which players don't have.
+`ModelRoots` reads the models straight from each package's `Models~` folder in the Editor. Player builds (Android, iOS, desktop) get them in `StreamingAssets/Models`, staged for the build only; Android copies them out of the APK on first launch.
 
 ### Scenes
 

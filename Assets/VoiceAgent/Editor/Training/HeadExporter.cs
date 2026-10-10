@@ -15,7 +15,9 @@ namespace VoiceAgent.Editor
         public static void Write(string path, IReadOnlyList<HeadTrainer> heads, IReadOnlyList<string> intents, int layer, int maxTokens, float valAccuracy, float valEce)
         {
             Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(path))!);
-            ModelWriter.Save(path, Graph(heads, intents, layer, maxTokens, valAccuracy, valEce));
+            var model = Graph(heads, intents, layer, maxTokens, valAccuracy, valEce);
+            ModelQuantizer.QuantizeWeights(QuantizationType.Float16, ref model);
+            ModelWriter.Save(path, model);
         }
 
         /// <summary>
