@@ -6,7 +6,7 @@ Nova is a voice assistant that runs entirely inside Unity 6 with the Inference E
 You tap the orb and speak. It then:
 
 - turns your speech into text,
-- works out which of 19 commands you meant, with probabilities shown live as you talk,
+- works out which of 20 commands you meant, with probabilities shown live as you talk,
 - runs the command in a small simulated home, or answers from the internet,
 - replies out loud.
 
@@ -49,7 +49,7 @@ The trained intent head (`Assets/StreamingAssets/Intent/decision_ai_head.sentis`
 | `Tests/SttTest` | SenseVoice partials and finals, the detected language and the real-time factor |
 | `Tests/TtsTest` | Supertonic 3 in Korean and English with the ten voice styles |
 | `Tests/GemmaTest` | Gemma3 270M alone: streamed chat generation under an editable system prompt, with its speed |
-| `Tests/AgentTest` | All 19 command probabilities live, encoder and head timings, a generation test |
+| `Tests/AgentTest` | All 20 command probabilities live, encoder and head timings, a generation test |
 
 All UI lives in the scene files; edit it in the Editor.
 
@@ -97,7 +97,7 @@ The trainer first holds some sentences out to measure the head and pick the epoc
 
 - The English and Korean rows of the [functiongemma-270m-finetune](https://huggingface.co/Sky-Kim/functiongemma-270m-finetune) dataset, downloaded once (19 MB) into `Library/VoiceAgent/functiongemma/`.
 - `Editor/Training/extra_phrases.json`, for what the dataset lacks (volume, "who are you", small talk, more Korean phrasings).
-- Two evaluation sets that are never trained on: `polarity_eval.json` (64 on/off sentences) and `benchmark.json` (136 sentences across all commands).
+- Two evaluation sets that are never trained on: `polarity_eval.json` (70 on/off sentences) and `benchmark.json` (142 sentences across all commands).
 
 **Adding a command**
 

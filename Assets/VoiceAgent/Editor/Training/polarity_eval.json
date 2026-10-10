@@ -256,6 +256,30 @@
   [
    "소리 내려 봐",
    "volume_down"
+  ],
+  [
+   "switch the vacuum on",
+   "start_vacuum"
+  ],
+  [
+   "switch the vacuum off",
+   "stop_vacuum"
+  ],
+  [
+   "put the vacuum to work",
+   "start_vacuum"
+  ],
+  [
+   "stop the vacuum right now",
+   "stop_vacuum"
+  ],
+  [
+   "청소기 다시 켜",
+   "start_vacuum"
+  ],
+  [
+   "청소기 당장 꺼",
+   "stop_vacuum"
   ]
  ]
 }

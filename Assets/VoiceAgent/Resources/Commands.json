@@ -33,6 +33,10 @@
       "options": ["start the vacuum", "clean the house", "run the robot vacuum", "vacuum the floor", "청소기 돌려줘"]
     },
     {
+      "id": "stop_vacuum", "icon": "cleaning_services", "color": "#4F7F2A", "label": "Stop the vacuum", "reply": "The vacuum is off.", "label_ko": "청소기 끄기", "reply_ko": "청소기를 껐어요.",
+      "options": ["stop the vacuum", "turn off the vacuum", "stop cleaning", "dock the robot vacuum", "청소기 꺼줘"]
+    },
+    {
       "id": "play_music", "icon": "music_note", "color": "#FF4F6D", "label": "Play music", "reply": "Playing some music.", "label_ko": "음악 틀기", "reply_ko": "음악을 틀게요.",
       "options": ["play music", "play a song", "put on some tunes", "start the music", "음악 틀어줘"]
     },

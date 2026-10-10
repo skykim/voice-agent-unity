@@ -5,11 +5,13 @@
     { "on": "turn_on_tv", "off": "turn_off_tv", "family": "device" },
     { "on": "turn_on_computer", "off": "turn_off_computer", "family": "device" },
     { "on": "play_music", "off": "stop_music", "family": "music" },
-    { "on": "volume_up", "off": "volume_down", "family": "volume" }
+    { "on": "volume_up", "off": "volume_down", "family": "volume" },
+    { "on": "start_vacuum", "off": "stop_vacuum", "family": "vacuum" }
   ],
   "families": [
     { "name": "device", "on": ["on", "boot up", "power up", "켜", "켜줘"], "off": ["off", "shut down", "power down", "꺼", "끄", "꺼줘"], "skip": ["시켜"] },
     { "name": "music", "on": ["on", "play", "start", "켜", "틀어", "재생"], "off": ["off", "stop", "pause", "cut", "kill", "꺼", "끄", "멈춰", "정지", "그만"], "skip": ["시켜"] },
-    { "name": "volume", "on": ["up", "louder", "increase", "raise", "올려", "키워", "크게", "높여", "업"], "off": ["down", "quieter", "softer", "decrease", "lower", "내려", "줄여", "작게", "낮춰", "다운"], "skip": ["너무", "들려", "too"] }
+    { "name": "volume", "on": ["up", "louder", "increase", "raise", "올려", "키워", "크게", "높여", "업"], "off": ["down", "quieter", "softer", "decrease", "lower", "내려", "줄여", "작게", "낮춰", "다운"], "skip": ["너무", "들려", "too"] },
+    { "name": "vacuum", "on": ["on", "start", "run", "돌려", "켜", "시작"], "off": ["off", "stop", "halt", "pause", "dock", "cancel", "꺼", "끄", "멈춰", "멈추", "정지", "중지", "그만"], "skip": ["시켜"] }
   ]
 }

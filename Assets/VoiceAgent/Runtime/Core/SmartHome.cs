@@ -71,6 +71,7 @@ namespace VoiceAgent
                 case "turn_on_computer": ComputerOn = true; break;
                 case "turn_off_computer": ComputerOn = false; break;
                 case "start_vacuum": VacuumUntil = Time.time + 8f; break;
+                case "stop_vacuum": VacuumUntil = -1f; break;
                 case "play_music": MusicOn = true; break;
                 case "stop_music": MusicOn = false; break;
                 case "volume_up": Volume = Mathf.Min(100, Volume + VolumeStep); break;

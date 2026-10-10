@@ -194,6 +194,30 @@
    "start_vacuum"
   ],
   [
+   "could you stop the vacuum cleaner",
+   "stop_vacuum"
+  ],
+  [
+   "the robot vacuum can stop now",
+   "stop_vacuum"
+  ],
+  [
+   "vacuum, stop",
+   "stop_vacuum"
+  ],
+  [
+   "청소기 좀 멈춰봐",
+   "stop_vacuum"
+  ],
+  [
+   "로봇 청소기 그만 돌려줘",
+   "stop_vacuum"
+  ],
+  [
+   "청소 이제 됐어",
+   "stop_vacuum"
+  ],
+  [
    "i want some music",
    "play_music"
   ],
