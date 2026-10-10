@@ -54,6 +54,8 @@ namespace VoiceAgent.Scenes
             m_Screen.Status.text = "Loading Gemma3 (tokenizer + 1.7 GB graph)…";
             await Awaitable.NextFrameAsync();
             if (!this) return;
+            await ModelRoots.PrepareAsync(text => m_Screen.Status.text = text);
+            if (!this) return;
             var clock = Stopwatch.StartNew();
             m_PersonaData = Persona.Load();
             m_Persona = m_PersonaData.system_prompt;

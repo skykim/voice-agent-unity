@@ -29,6 +29,8 @@ namespace VoiceAgent.Scenes
             m_Screen.Status.text = "Loading SenseVoice…";
             await Awaitable.NextFrameAsync();
             if (!this) return;
+            await ModelRoots.PrepareAsync(text => m_Screen.Status.text = text);
+            if (!this) return;
             m_Voice = new VoiceInput();
             m_Voice.SpeechStarted += () => m_Partial.text = "…";
             m_Voice.Partial += text => m_Partial.text = text;

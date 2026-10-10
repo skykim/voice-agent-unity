@@ -41,6 +41,8 @@ namespace VoiceAgent.Scenes
             await Awaitable.NextFrameAsync();
             await Awaitable.NextFrameAsync();
             if (!this) return;
+            await ModelRoots.PrepareAsync(m_View.SetStatus);
+            if (!this) return;
 
             var clock = Stopwatch.StartNew();
             m_Speech.Voice = persona.voice;

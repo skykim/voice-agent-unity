@@ -42,6 +42,8 @@ namespace VoiceAgent.Scenes
             m_Screen.Status.text = "Loading Supertonic…";
             await Awaitable.NextFrameAsync();
             if (!this) return;
+            await ModelRoots.PrepareAsync(text => m_Screen.Status.text = text);
+            if (!this) return;
             try
             {
                 m_Speech.Load(ModelRoots.Tts);

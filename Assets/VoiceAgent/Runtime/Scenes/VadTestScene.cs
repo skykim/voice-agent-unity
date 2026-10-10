@@ -25,9 +25,11 @@ namespace VoiceAgent.Scenes
         float m_SpeechStart;
         bool m_Running, m_Speech;
 
-        void Start()
+        async void Start()
         {
             m_Probabilities = new float[m_Bars.Length];
+            await ModelRoots.PrepareAsync(text => m_Screen.Status.text = text);
+            if (!this) return;
             m_Toggle.onClick.AddListener(Toggle);
             m_Mic = new MicrophoneStream();
             m_Vad = new SileroVad(BackendType.CPU, 0.5f, 0.35f, EndSilenceSeconds);

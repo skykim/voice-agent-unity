@@ -1,5 +1,8 @@
 using System;
 using UnityEngine;
+#if UNITY_ANDROID
+using UnityEngine.Android;
+#endif
 
 namespace VoiceAgent
 {
@@ -32,6 +35,14 @@ namespace VoiceAgent
         public bool Start()
         {
             if (IsRunning) return true;
+#if UNITY_ANDROID && !UNITY_EDITOR
+            // Android asks at runtime; the start that triggers the dialog fails and the next one succeeds.
+            if (!Permission.HasUserAuthorizedPermission(Permission.Microphone))
+            {
+                Permission.RequestUserPermission(Permission.Microphone);
+                return false;
+            }
+#endif
             if (Microphone.devices.Length == 0) return false;
             // The device went away since the last start: its clip is dead.
             if (m_Clip != null) UnityEngine.Object.Destroy(m_Clip);

@@ -26,3 +26,8 @@ mono_crash.*.json
 
 # Local helper scripts (tests run from the Test Runner or `unity test`)
 *.sh
+
+# Model copies staged into StreamingAssets during a player build (ModelBuildStaging)
+/Assets/StreamingAssets/Models/
+/Assets/StreamingAssets/Models.meta
+/Assets/StreamingAssets/voiceagent_files.txt*
