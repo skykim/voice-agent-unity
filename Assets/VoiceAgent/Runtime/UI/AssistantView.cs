@@ -70,7 +70,6 @@ namespace VoiceAgent.UI
             m_Input.ActivateInputField();
         }
 
-        public void FocusInput() => m_Input.ActivateInputField();
         public void SetInputText(string value) => m_Input.SetTextWithoutNotify(value ?? string.Empty);
         public void SetStatus(string value) => m_Status.text = value;
         public void SetInteractable(bool value) => m_Input.interactable = value;

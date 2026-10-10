@@ -110,7 +110,6 @@ namespace VoiceAgent.Scenes
             m_View.SetStatus(string.Empty);
             UnityEngine.Debug.Log($"[VoiceAgent] ready in {clock.Elapsed.TotalSeconds:F1} s");
             m_View.AddMessage(persona.greeting, false);
-            m_View.FocusInput();
         }
 
         void ToggleListen()
