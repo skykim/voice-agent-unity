@@ -18,7 +18,7 @@ It understands **English and Korean** and answers in the language you used.
 | Speech to text | SenseVoice-Small (FP16), auto language | GPU | [`com.sky.sentis.sensevoice`](https://huggingface.co/Sky-Kim/com.sky.sentis.sensevoice) |
 | Intent | gemma-3-270m-it (FP16), frozen, plus a Decision AI attention head | GPU + CPU | [`com.sky.sentis.gemma3-270m-it`](https://huggingface.co/Sky-Kim/com.sky.sentis.gemma3-270m-it) + `Editor/Training/` |
 | Chat fallback | gemma-3-270m-it greedy generation (same graph, KV cache) | GPU | same package |
-| Text to speech | Supertonic 3 (FP16), voice F2 | GPU | [`com.sky.sentis.supertonic`](https://huggingface.co/Sky-Kim/com.sky.sentis.supertonic) |
+| Text to speech | Supertonic 3 (FP16), voice F2 | CPU | [`com.sky.sentis.supertonic`](https://huggingface.co/Sky-Kim/com.sky.sentis.supertonic) |
 
 Typical latency from the end of speech to the first sound of the reply on an Apple M5 Max:
 
