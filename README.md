@@ -1,6 +1,6 @@
 # Nova, an on-device voice agent for Unity
 
-[![Nova](https://img.youtube.com/vi/E_TsfNiE5fo/0.jpg)](https://youtu.be/E_TsfNiE5fo)
+[![Nova](https://img.youtube.com/vi/MIsAzpg1xLI/0.jpg)](https://youtu.be/MIsAzpg1xLI)
 
 Nova is a voice assistant that runs entirely inside Unity 6 with the Inference Engine (Sentis).
 You tap the orb and speak. It then:
